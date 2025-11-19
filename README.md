@@ -96,4 +96,8 @@ Error response:
 
 ## License
 
+<<<<<<< HEAD
 MIT
+=======
+MIT
+>>>>>>> b72fa76 (Added Validation for URL requests)
