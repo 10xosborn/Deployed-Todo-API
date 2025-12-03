@@ -1,6 +1,5 @@
 const Joi = require('joi');
 
-
 const validatePatchTodo = (req, res, next) => {
     const patchSchema = Joi.object({
         task: Joi.string().min(3).max(100),

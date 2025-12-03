@@ -4,8 +4,8 @@ const joi = require("joi");
 const validatePostTodo = (req, res, next) => {
     const postSchema = joi.object({
         task: joi.string().min(3).max(100).required(),
-        completed: joi.boolean().required(),
-        dueDate: joi.alternatives().try(joi.string().isoDate(), joi.valid(null)).required()
+        completed: joi.boolean(),
+        dueDate: joi.alternatives().try(joi.string().isoDate(), joi.valid(null))
     });
 
     const {error} = postSchema.validate(req.body);
