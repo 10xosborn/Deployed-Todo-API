@@ -29,25 +29,18 @@ app.get('/', (req, res) => {
 //Get All Todos
 app.get('/todos', async (req, res, next) => {
     try {
-        const todos = await Todo.find({});
+        const filter = {};
+        
+        // Add completed filter if query parameter is provided
+        if (req.query.completed !== undefined) {
+            filter.completed = req.query.completed === 'true';
+        }
+        
+        const todos = await Todo.find(filter);
         res.json({
             success: true,
             count: todos.length,
             data: todos
-        });
-    } catch (error) {
-        next(error);
-    }
-});
-
-// Get Completed Todos
-app.get('/todos/completed', async (req, res, next) => {
-    try {
-        const completedTodos = await Todo.find({ completed: true });
-        res.json({
-            success: true,
-            count: completedTodos.length,
-            data: completedTodos
         });
     } catch (error) {
         next(error);
